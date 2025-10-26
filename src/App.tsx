@@ -10,7 +10,6 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<ChatInterface />} />
-          <Route path="/admin" element={<AdminPanel />} />
         </Routes>
       </div>
     </Router>

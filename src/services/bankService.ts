@@ -92,14 +92,29 @@ export class BankService {
     }
   }
 
-  static async searchSimilarPolicies(query: string): Promise<PolicyText[]> {
+  static async searchSimilarPolicies(query: string): Promise<(PolicyText & { name: string })[]> {
     // This would require a vector similarity search
-    // For now, returning all policies for demonstration
+    // For now, returning all policies with bank names flattened
     const { data, error } = await supabase
       .from('policies_text')
-      .select('*');
+      .select(
+        `*,
+        banks!inner(
+          name
+        )`
+      );
     
     if (error) throw error;
-    return data || [];
+    // Cast data to include joined bank name
+    const items = (data as Array<PolicyText & { banks: { name: string } }>) || [];
+    // Flatten banks.name to top-level name
+    return items.map(({ id, bank_id, policy_text, embedding, updated_at, banks }) => ({
+      id,
+      bank_id,
+      policy_text,
+      embedding,
+      updated_at,
+      name: banks.name
+    }));
   }
 }

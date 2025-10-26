@@ -24,7 +24,7 @@ export function Navigation() {
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Chat Interface
               </Link>
-              <Link
+              {/* <Link
                 to="/admin"
                 className={`inline-flex items-center px-3 py-2 rounded-md text-sm font-medium ${
                   location.pathname === '/admin'
@@ -34,7 +34,7 @@ export function Navigation() {
               >
                 <Settings className="w-4 h-4 mr-2" />
                 Admin Panel
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
