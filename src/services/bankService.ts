@@ -15,7 +15,7 @@ export class BankService {
   static async createBank(name: string): Promise<Bank> {
     const { data, error } = await supabase
       .from('banks')
-      .insert({ name })
+      .insert({ name } as any)
       .select()
       .single();
     
@@ -24,7 +24,7 @@ export class BankService {
   }
 
   static async updateBank(id: number, name: string): Promise<Bank> {
-    const { data, error } = await supabase
+    const { data, error } = await (supabase as any)
       .from('banks')
       .update({ name })
       .eq('id', id)
@@ -32,7 +32,7 @@ export class BankService {
       .single();
     
     if (error) throw error;
-    return data;
+    return data as Bank;
   }
 
   static async deleteBank(id: number): Promise<void> {
@@ -63,7 +63,7 @@ export class BankService {
     const existingPolicy = await this.getPolicyByBankId(bankId);
     
     if (existingPolicy) {
-      const { data, error } = await supabase
+      const { data, error } = await (supabase as any)
         .from('policies_text')
         .update({ 
           policy_text: policyText, 
@@ -77,7 +77,7 @@ export class BankService {
       if (error) throw error;
       return data;
     } else {
-      const { data, error } = await supabase
+      const { data, error } = await (supabase as any)
         .from('policies_text')
         .insert({ 
           bank_id: bankId, 
@@ -92,7 +92,7 @@ export class BankService {
     }
   }
 
-  static async searchSimilarPolicies(query: string): Promise<(PolicyText & { name: string })[]> {
+  static async searchSimilarPolicies(_query: string): Promise<(PolicyText & { name: string })[]> {
     // This would require a vector similarity search
     // For now, returning all policies with bank names flattened
     const { data, error } = await supabase

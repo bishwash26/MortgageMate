@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User } from 'lucide-react';
-import { BankService } from '../services/bankService';
+import { Send, Bot, User, Sparkles, TrendingUp, Shield, Zap } from 'lucide-react';
 import { EmbeddingService } from '../services/embeddingService';
 
 // Utility function to convert markdown-style formatting to HTML
@@ -27,7 +26,7 @@ export function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: 'Hello! I\'m your bank policy assistant. Ask me anything about our policies and I\'ll help you find the information you need.',
+      content: '👋 Welcome to **MortgageMate**! I\'m your AI mortgage consultant. I can help you:\n\n• **Analyze credit issues** and find suitable lenders\n• **Compare bank policies** and interest rates\n• **Recommend the best mortgage** for your situation\n\nWhat\'s your mortgage scenario today?',
       sender: 'bot',
       timestamp: new Date(),
     }
@@ -658,9 +657,7 @@ One borrower Aus citizen, one not? Check lender policy.
     `;
 
     try {
-      
-      const prevUserMessage = messages.filter(message => message.sender == 'user').map(m => m.content).join('\n');
-      const response = await EmbeddingService.generateChatResponse(inputMessage, AI_BASE_CONTEXT, AI_BASE_POLICIES, prevUserMessage);
+      const response = await EmbeddingService.generateChatResponse(inputMessage, AI_BASE_CONTEXT, AI_BASE_POLICIES);
       
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -692,53 +689,111 @@ One borrower Aus citizen, one not? Check lender policy.
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)]">
-      <div className="flex-1 overflow-y-auto bg-gray-50 p-4">
-        <div className="max-w-4xl mx-auto space-y-4">
+    <div className="flex flex-col h-[calc(100vh-4rem)] bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+      {/* Header */}
+      <div className="bg-white/80 backdrop-blur-sm border-b border-purple-200/50 p-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl flex items-center justify-center">
+                <Sparkles className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900">AI Mortgage Consultant</h2>
+                <p className="text-sm text-gray-500">Get personalized mortgage recommendations</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-1 bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span>AI Online</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Messages */}
+      <div className="flex-1 overflow-y-auto p-4">
+        <div className="max-w-4xl mx-auto space-y-6">
+          {messages.length === 1 && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-purple-200/50 hover:shadow-lg transition-all duration-200">
+                <div className="flex items-center space-x-3 mb-2">
+                  <TrendingUp className="w-5 h-5 text-purple-600" />
+                  <h3 className="font-semibold text-gray-900">Credit Analysis</h3>
+                </div>
+                <p className="text-sm text-gray-600">Analyze your credit profile and find suitable lenders</p>
+              </div>
+              <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-purple-200/50 hover:shadow-lg transition-all duration-200">
+                <div className="flex items-center space-x-3 mb-2">
+                  <Shield className="w-5 h-5 text-blue-600" />
+                  <h3 className="font-semibold text-gray-900">Policy Comparison</h3>
+                </div>
+                <p className="text-sm text-gray-600">Compare rates and policies across multiple banks</p>
+              </div>
+              <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-purple-200/50 hover:shadow-lg transition-all duration-200">
+                <div className="flex items-center space-x-3 mb-2">
+                  <Zap className="w-5 h-5 text-green-600" />
+                  <h3 className="font-semibold text-gray-900">Smart Recommendations</h3>
+                </div>
+                <p className="text-sm text-gray-600">Get AI-powered mortgage recommendations</p>
+              </div>
+            </div>
+          )}
+          
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`flex items-start space-x-3 ${
+              className={`flex items-start space-x-4 ${
                 message.sender === 'user' ? 'justify-end' : 'justify-start'
               }`}
             >
               {message.sender === 'bot' && (
-                <div className="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                  <Bot className="w-4 h-4 text-white" />
+                <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <Bot className="w-5 h-5 text-white" />
                 </div>
               )}
               <div
-                className={`max-w-xs lg:max-w-2xl px-4 py-2 rounded-lg ${
+                className={`max-w-xs lg:max-w-2xl px-6 py-4 rounded-2xl shadow-lg ${
                   message.sender === 'user'
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-white text-gray-900 shadow-sm'
+                    ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white ml-12'
+                    : 'bg-white/90 backdrop-blur-sm text-gray-900 border border-purple-200/50'
                 }`}
               >
                 <div
-                  className="text-sm whitespace-pre-wrap"
+                  className={`text-sm leading-relaxed ${
+                    message.sender === 'user' ? 'text-white' : 'text-gray-800'
+                  }`}
                   dangerouslySetInnerHTML={{ __html: formatMessageContent(message.content) }}
                 />
-                <p className="text-xs mt-1 opacity-70">
+                <p className={`text-xs mt-3 ${
+                  message.sender === 'user' ? 'text-purple-200' : 'text-gray-500'
+                }`}>
                   {message.timestamp.toLocaleTimeString()}
                 </p>
               </div>
               {message.sender === 'user' && (
-                <div className="flex-shrink-0 w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-                  <User className="w-4 h-4 text-white" />
+                <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-gray-600 to-gray-700 rounded-xl flex items-center justify-center shadow-lg">
+                  <User className="w-5 h-5 text-white" />
                 </div>
               )}
             </div>
           ))}
+          
           {isLoading && (
-            <div className="flex items-start space-x-3 justify-start">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                <Bot className="w-4 h-4 text-white" />
+            <div className="flex items-start space-x-4 justify-start">
+              <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                <Bot className="w-5 h-5 text-white" />
               </div>
-              <div className="bg-white text-gray-900 shadow-sm px-4 py-2 rounded-lg">
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+              <div className="bg-white/90 backdrop-blur-sm text-gray-900 border border-purple-200/50 px-6 py-4 rounded-2xl shadow-lg">
+                <div className="flex items-center space-x-2">
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  </div>
+                  <span className="text-sm text-gray-600 ml-2">AI is thinking...</span>
                 </div>
               </div>
             </div>
@@ -747,25 +802,39 @@ One borrower Aus citizen, one not? Check lender policy.
         </div>
       </div>
       
-      <div className="bg-white border-t p-4">
+      {/* Input */}
+      <div className="bg-white/80 backdrop-blur-sm border-t border-purple-200/50 p-4">
         <div className="max-w-4xl mx-auto">
-          <div className="flex space-x-2">
-            <textarea
-              value={inputMessage}
-              onChange={(e) => setInputMessage(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Type your question about bank policies..."
-              className="flex-1 min-h-[44px] max-h-32 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-              rows={1}
-              disabled={isLoading}
-            />
+          <div className="flex space-x-4">
+            <div className="flex-1 relative">
+              <textarea
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Describe your mortgage situation... (e.g., 'I have a 650 credit score and need a $500k loan')"
+                className="w-full min-h-[56px] max-h-32 px-4 py-3 pr-12 bg-white/90 backdrop-blur-sm border border-purple-200/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none shadow-lg placeholder-gray-500"
+                rows={1}
+                disabled={isLoading}
+              />
+              <div className="absolute right-3 top-3 text-gray-400">
+                <Sparkles className="w-5 h-5" />
+              </div>
+            </div>
             <button
               onClick={handleSendMessage}
               disabled={!inputMessage.trim() || isLoading}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:from-purple-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg transition-all duration-200 flex items-center space-x-2"
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-5 h-5" />
+              <span className="hidden sm:inline">Send</span>
             </button>
+          </div>
+          <div className="flex items-center justify-center mt-3 space-x-4 text-xs text-gray-500">
+            <span>✨ Powered by AI</span>
+            <span>•</span>
+            <span>🔒 Secure & Private</span>
+            <span>•</span>
+            <span>⚡ Instant Analysis</span>
           </div>
         </div>
       </div>
