@@ -59,238 +59,608 @@ export function ChatInterface() {
     setIsLoading(true);
 
     const AI_BASE_CONTEXT = `
-To prepare your documents for an LLM (Large Language Model) or a RAG (Retrieval-Augmented Generation) system, the best approach is to consolidate the tabular and free-form text into a single, highly structured, and citation-rich text document. This preserves all the core data while making it easily ingestible and searchable.
+Credit Report/File (C)
+No credit file found?
+  
+No Enquiries – investigate why?
+Does it make sense given their liabilities?
+Example: If they have a credit card & there are no enquiries – doesn’t make sense.
 
-Below is the consolidated text, categorized by policy area, that includes all specific lender details, best-fit scores, and general rules.
+Adverse Listings: Defaults, Judgments and discharged bankruptcies
 
-Consolidated Multi-Lender Policy Document
-I. General Policy Rules (Applicable to All Lenders)
-These points cover core requirements that are generally consistent across all four lenders.
+When was it lodged?
 
+Has it been paid/discharged?
 
-Documentation: All four require KYC/VOI (Verification of Identity), payslips/YTD statements, bank statements, contract/valuation (for purchase), and CCR (Comprehensive Credit Reporting) checks.
+Multiple enquiries
 
+More than 2 enquiries in past 6 months at 95% LVR
 
-Self-Employed Documentation: Self-employed applicants generally need 1–2 years tax returns or accountant Financial Statements (FS), depending on the specific lender's rules.
+More than 3 enquiries in last 6 months at 90% LVR or below is a credit issue
 
-LVR/LMI: Standard owner-occupied LVR is up to 95% with LMI (Lender's Mortgage Insurance); LVR tiers materially affect pricing and product eligibility.
+Lots of enquiries for small debts
 
+Enquiries with non-conforming lenders / payday lenders
 
-Servicing: Lenders apply assessment rates and buffers to calculate serviceability.
+Enquiry with LMI providers – check where this app is going & look for ‘QBE’ or ‘Genworth’ in particular in the last 18 months
 
-Security & Postcode: All use postcode/security screens. Apartments/high-density and specific postcodes may attract lower LVR caps.
+Already applied with a lender we will use.
 
-Construction/OTP: Accepted by all with progressive draws. Fixed-price contracts are preferred and typically have tighter LVRs.
+Repayment History
+Bank Statements (C)
 
+Does it cover length of period required by the lender?
 
-Non-Residents & Overseas Income: Considered but restricted—requiring lower LVRs, extra verification, and specific rate/product overlays.
+Must be less than 6 weeks old
 
-II. Multi-Lender Policy Comparison Table
-Policy Niche	CBA (Commonwealth Bank)	Westpac Group	NAB (National Australia Bank)	ANZ (Australia & NZ Bank)	Best Score
-Income (PAYG)	
-Payslips, YTD, bank stmts; probation accepted; MLE capture per CBA rules #828838 
+Does the statement show salary credits for the applicant/s?
 
-Payslips, YTD; CCR used; probation accepted 
+If not, obtain statement which has salary credits
 
-Payslips, YTD; flexible assessor guidance [#NAB-220724] 
+Undisclosed Debts: Look for transfers to undisclosed credit cards & financial institutions
 
-3m YTD payslip usually; HLC tooling for consistency [#ANZ-HLC-070425] 
+Signs of gambling – look for multiple ATM withdrawals in one day, especially at pubs/clubs
 
-ANZ 
+Centrelink payments
 
-Self-Employed	
-Generally 2 yrs tax; some 1yr accountant FS allowed 
+Child support payments
 
-2 yrs tax standard; 1 yr case-by-case 
+High expenditure
 
-1 yr accountant FS + management info possible (NAB flexible) [#NAB-130824] 
+Name of undisclosed partners
 
-Company wage rules clear; 18 months ABN + payslip guidance [#ANZ-LenderUpdate-120424] 
+Any personal transactions that say "loans"
 
-NAB / ANZ 
+Over-limit withdrawals
 
-Servicing & Buffers	
-CBA assessment rates, HEM comparisons [#CBA-doc] 
+Quick withdrawals to zero balance
 
-Assessment buffers + HEM; CCR influences debt capture 
+Loan Statements / Credit Card Statements (C)
 
-Published assessment rates and tables; HEM used [#NAB-220724] 
+Does it cover the required length?
 
-HLC calculates UMI, applies floors/shading (strong tooling) [#ANZ-HLC-070425] 
+Must be less than 6 weeks old
 
-ANZ 
+Missed repayments
 
-Credit History	
-CCR used; recent adverse history impactful 
+Late repayments
 
-CCR used; emphasis on last 12 months conduct 
+No repayments
 
-CCR used; important for refinance/switch [#NAB-091123] 
+Constant redraws
 
-CCR used; leveraged for Simpler Switch & assessments 
+Over limits
 
-CBA / Westpac 
+Cash advance
 
-LMI Waivers	
-Concessions for some professions (product dependent) 
+Links to other undisclosed accounts
 
-Concessions for selected professionals (check criteria) 
+Arrears – check for arrears fees
 
-Profession & product dependent; portal notes advise 
+If going with the same lender – check that they have never missed a payment
 
-Explicit waivers for medicos, lawyers, accountants (well documented) [#ANZ-WhyChoose-271124] 
+Council Rates (C)
 
-ANZ 
+In arrears?
 
-Refinance & Cashout	
-Refi accepted with conduct evidence; cashout purpose checked 
+Same names on council rates as on application?
 
-Refi OK; cashout verification for large amounts 
+Another person on title not mentioned
 
-Cashout >$100k or LVR>90% needs documentary evidence of use [#NAB-LoanPurpose-010125] 
+Only husband or wife on title
 
-Simpler Switch & refi pathways; CCR used for switch [#ANZ-WhyChoose-271124] 
+Property in company/trust name
 
-NAB / ANZ 
+Sometimes land area/zoning is mentioned – check if it meets policy (anything other than residential zoning is a credit issue)
 
-Overseas Income	
-Accepted with conversion & verification; shading applied 
+Genuine Savings (C)
+Is genuine savings required?
 
-Accepted with conversion & extra documentation 
+Full doc loan above 85% LVR – need to evidence genuine savings
 
-Overseas borrower rules; conversion & verification required [#NAB-081123] 
+Full doc loan above 60% LVR – may need evidence of genuine savings
 
-HLC captures overseas income; net conversion guidance [#ANZ-HLC-070425] 
+Rent as Genuine Savings
 
-ANZ 
+Applicant renting for 12 months at same place with a licensed real estate agent?
 
-SLA (Broker/Clean File)	
-1–7 business days for clean PAYG; longer for complex/foreign/selfemployed 
+Private rent as genuine savings = credit issue
 
-1–7 business days for simple PAYG; fasttrack for very clean files 
+Past rental ledger shows perfect repayments?
 
-1–5 business days for clean PAYG via broker portal; longer for complex/foreign/rural 
+Rental ledger under the same names as borrowers?
 
-1–5 business days for clean PAYG; longer for complex/selfemployed 
+Other forms of Genuine Savings
 
+Additional debt repayments as genuine savings
 
-N/A
-III. Variable Income Policy Comparison
-Variable Feature	CBA	Westpac Group	NAB	ANZ	Consolidated Rule
-Bonus Income	
-Accepted when regular and evidenced (payslips/YTD/ATO) 
+Inheritance or gift held for 3 months = genuine savings?
 
-Accepted with evidence; ongoing/regular required 
+Ideal Genuine Savings
 
-Accepted if evidenced; usually 2 years for annual bonuses 
+Must be in borrower’s name and in personal account
 
-Accepts where evidenced and ongoing 
+Ideally increasing with no lump sums over at least 3 months
 
-Requires regularity evidence (12–24 months) 
+Lump sums = any amount larger than applicant’s pay
 
-Overtime Income	
-Accepted when regular; 6–12 months evidence; 100% for eligible medicos/emergency frontline with employer evidence 
+Investigate all lump sum payments
 
-Accepted; regular OT often accepted with 6+ months evidence; 100% possible for emergency services (conditions apply) 
+If balance not increasing, check with lender
 
-Accepted; verify with ~6 months salary credits/payslips for OT/casual 
+Amount Required
 
-Accepted where regular; verify via YTD/payslips 
+Is more than 5% of purchase price required?
 
-100% may be allowed for eligible frontline/medical roles, but YTD history is mandatory 
+Most lenders require 10% genuine savings for investment purposes.
 
-Shading / % Used	
-Commonly ~80%; 100% for verified eligible frontline/medical roles 
+Collateral
+Security (C)
+Location
 
-Typically ~80%; 100% for specific emergency/frontline roles when evidenced 
+Check lender’s postcode restriction policy
 
-System and policy commonly apply ~80% (20% shading); some foreign cases receive higher shading 
+Inner City – check postcode & maximum LVR
 
-Common practice: use ~80% for variable income (20% shading) 
+Capital City location is best
 
-Typically ~80% used when assessing serviceability 
+Natural disaster effects: flood, fire, earthquake etc.
 
-IV. ANZ-Specific Detailed Policy Summary
-The ANZ Policy document covers credit assessment guidelines, loan structure requirements, and evidence standards for residential mortgage lending.
+QLD flood-affected
 
-Income Verification 
+Size
 
+<50m² – check minimum size policy
 
-PAYG Income: Requires two recent consecutive payslips showing employer name, gross income, and YTD figure. Casual employment must be ongoing for at least 6 months. Bonus, commission, and overtime are considered only if consistent over 6–12 months.
+Always check land size (>2ha = check policy)
 
+10ha – LVR likely below 90%
 
+Large, cheap land may be rural – check if within guidelines
 
+Type of Property
 
-Self-Employed Income: Requires a minimum of 2 years of tax returns and financials (individual and business). Income is averaged across two years, or the latest year is used if justified. Acceptable add-backs include non-recurring expenses, depreciation, and interest on loans being refinanced.
+Zoning – anything other than residential zoning = credit issue
 
+High Density – QBE policy: higher than 4 levels & more than 30 units
 
+Off the plan – check proposed settlement date
 
+Title type – Torrens & Strata fine, anything else check
 
-Rental Income: 80% of gross rental income is accepted for serviceability, supported by a signed lease or rental appraisal.
+Service Apartment – check bank acceptability
 
+Other
 
-Serviceability: Assessment rate is 3% above the actual interest rate or a minimum floor rate (currently around 8%).
+No agent involved = goes straight to LMI as outside DUA
 
-Loan Structure and Risk 
+Good condition / livable
 
+Contract of Sale (C)
 
+Rebates on contract of sale
 
+Vendor same last name as purchaser?
 
-Loan Purposes: Supports owner-occupied/investment purchases, refinances, debt consolidation, construction, and bridging loans.
+Is contract signed and dated?
 
+Purchase through Real Estate Agent?
 
-Equity release above $100,000 requires a declared purpose and evidence.
+If not, ask for explanation (e.g., private sale, family purchase)
 
+Are all purchasers on COS the same as loan borrowers?
 
-LVR/LMI: Maximum LVR is 95% (including LMI). Genuine savings of at least 5% of the purchase price are required for high-LVR loans.
+Valuations (If included) (C)
 
+Is address correct (matches council rates/COS)?
 
+Borrower name correct?
 
-Credit Assessment: DTI (Debt-to-Income) ratio should generally not exceed 7x gross income. Credit history must be clear of unpaid defaults or bankruptcy.
+Negative comments in valuation?
 
+Comparables within 15% of valuation and within 6 months?
 
+Valuation less than 3 months old (from inspection date)?
 
-Special Scenarios: Temporary residents are limited to 80% LVR. Guarantor loans are limited to immediate family.
+Title details correct?
 
+Any 3+ risk ratings or any 4/5 risk ratings?
 
-Process and Documentation 
+Adverse features mentioned?
 
+Property currently for sale?
 
+Property in bad condition / incomplete?
 
+Commercial use mentioned?
 
-Construction: Loans are released in stages (slab, frame, lock-up, fixing, completion), with a valuer confirming stage completion before each drawdown.
+Capital
+LVR (C)
 
+At 90% or 95% LVR – check lender’s maximum loan limits
 
+Verify max LVR under your loan scenario
 
-Supporting Documents: Requires VOI, 90-day bank statements, tax returns, contracts of sale, and existing loan statements.
+Does maximum LVR include LMI?
 
-SLA: New Application: 1 Business Day; Additional Docs: 2 Business Days.
+What LVR including LMI is acceptable?
 
+Funds to Complete (C)
 
-Exceptions: Allowed under strong mitigating circumstances (e.g., high assets, long-term ANZ relationship) and require a written rationale and credit manager approval.
+Funding position completed?
 
-V. Broker Tips and Gotchas
+All fees, grants, stamp duties included?
 
-Documentation: Always attach YTD payslips, 3 months OFI salary credits, PAYG/NOA or ATO statements, and an employer letter confirming the ongoing nature of variable income.
+Is LMI required & included?
 
+Is LMI capped or inclusive?
 
-Excluded Income: Higher duties and one-off payments are typically excluded as ongoing income unless they are made permanent.
+Are debts being paid out included?
 
+Asset Position (C)
 
-Referrals: Foreign income and variable pay with a short history often require extra lender referral; price conservatively and allow more SLA time.
+A&L complete with supporting documents
 
-NAB: Watch NAB-specific rural/hectare rules and foreign-income sensitisations. Use broker portal tools as the system auto-shades uncertain income.
+Positive asset position
 
+Less than 5% unsecured debts below 85% LVR = credit issue
 
-ANZ: Use ANZ calculator tools to allocate income-over-base; document why income is ongoing to avoid referral.
+Borrower’s net assets match Age & Income?
 
+Capacity
+Type and Length of Employment (C)
 
-Westpac: Keep clear diary notes when using non-base income and confirm it is not temporary.`
+Less than 12 months – check with lender
+
+Employment history – gaps, same industry?
+
+Probation period
+
+Casual employment / 2nd job / family employment
+
+Self-employed:
+
+Full Doc – Tax Returns & NOA
+
+Low Doc – Low Doc Training
+
+Contractor – Self-Employed Training
+
+Income (C)
+
+Any income aside from base = credit issue (check with lender)
+
+Overtime, Allowances, Bonus/Commissions – check % & evidence
+
+Unknown deductions
+
+HECS/HELP
+
+Voluntary Superannuation – provide evidence
+
+Pay Slips (C)
+
+Most recent & consecutive
+
+Show name, employer, ABN, pay date, YTD, computerized
+
+3 months YTD – else group certificate
+
+No Annual Leave – borrower may be casual/contractor
+
+Fraud indicators
+
+Deductions / Salary sacrifice
+
+HECS/HELP considered in servicing
+
+Letter/Contract of Employment (C)
+
+On letterhead, ABN, contact details, signed & dated
+
+Includes start date, status, salary, full-time/casual
+
+Typed and professional
+
+Centrelink Statements (C)
+
+All pages provided
+
+FTB A & B: declared income matches?
+
+Check lender’s max acceptable child age
+
+Other Centrelink incomes – check lender acceptance
+
+Group Certificate (C)
+
+Date payments received
+
+TFN removed
+
+Most recent available?
+
+Income matches YTD from payslips? Explain discrepancies.
+
+Tax Returns & Notices of Assessment (C)
+
+Two most recent tax returns
+
+Include company/partnership if applicable
+
+Include NOA
+
+Financial statements for companies
+
+TFNs removed
+
+Avoid double dipping company income
+
+Watch for forged NOAs (barcodes can be scanned)
+
+Draft returns – flag
+
+Explain assessable income
+
+Match income with applications/calculators
+
+If income changed >20% – check lender guidelines
+
+Decline in income – check policy
+
+Any tax debts?
+
+Add notes on assessable income determination
+
+Servicing Calculator (C)
+
+Correct assessment rate
+
+Watch for unit mismatches (monthly vs annual)
+
+Income consistency
+
+Meets serviceability?
+
+LMI calculator completed if required
+
+Add notional rent if rent-free with parents
+
+All debts/expenses match application
+
+Loan amount includes LMI if capped
+
+Rent reliance <50%
+
+Using non-base income? Follow policy
+
+NSR/DSR thresholds checked
+
+Conditions / Common Sense
+DUA & LMI (C)
+
+Loan > $1m – call BDM
+
+Outside DUA = LMI policy applies
+
+Developer/no agent = outside DUA
+
+Confirm lender DUA policy
+
+Purpose (C)
+
+Non-purchase owner-occupied
+
+Construction:
+
+All docs included?
+
+Customer aware this is final contract?
+
+Funds to complete checked?
+
+One or two applications required?
+
+Cash Out:
+
+Reason & evidence for >$50K
+
+Lender acceptance
+
+Lender
+
+Existing customer? Check history
+
+Clawback under 2 years
+
+Check if pre-approval is genuine or system-generated
+
+Requested Loan Product
+
+Check for minimum loan size
+
+Requested Repayments
+
+Interest-only: check lender policy
+
+Existing OFI account for repayments – check acceptance
+
+Other
+Borrower’s Age (C)
+
+Over 45 or under 20 = credit issue
+
+Check retirement age vs loan term
+
+Provide exit strategy if needed
+
+Superannuation matches income/life stage
+
+Credit Score (C)
+
+Higher LVR = harsher scoring
+
+2 enquiries in 6 months
+
+No defaults
+
+Check for missed payments with known lenders
+
+High-risk professions flagged
+
+Address history
+
+Assets complete? Furniture, Car, Super, etc.
+
+Balances < credit limits
+
+Contact numbers for all applicants
+
+Cheque account included (CBA scores lower without it)
+
+Trust (C)
+
+Hybrid?
+
+Allowed to borrow funds for investment?
+
+Directors, beneficiaries, appointer verified
+
+Does lender require beneficiary as borrower?
+
+Low Doc (C)
+
+No GST registration – max income ~$70K
+
+Some lenders require GST even < $75K
+
+Business has no defaults
+
+ABN registered for required time
+
+Normal securities only
+
+BAS assessment per lender (40%, 50%, specific rule)
+
+Builder/Developer restrictions
+
+<50sqm or >2ha = issue
+
+Cash out = red alert
+
+Low Doc declaration complete
+
+Location, land, and property type acceptable
+
+Co-borrowers with PAYG – provide full income evidence
+
+Is declared income sufficient?
+
+No Doc = unregulated loan?
+
+ABN GST registered if required
+
+Guarantor (C)
+
+Loan purpose = investment = credit issue
+
+Retired/pension guarantor
+
+Max guarantee per lender
+
+Family guarantor requires income evidence
+
+Lender accepts second mortgage?
+
+Guarantor asset base = exit plan
+
+Guarantor immediate family?
+
+Non-Resident (C)
+
+Visa type
+
+Foreign investor – check country acceptability
+
+FIRB approval
+
+One borrower Aus citizen, one not? Check lender policy.
+    `;
+
+    const AI_BASE_POLICIES = `
+    ** Banks ** 
+    Bankwest, CBA, La Trobe, Qudos 
+     *** Bonus Income ***
+        - Bankwest: Take bonus income from the most recent financial year.
+        - Qudos, CBA and La Trobe: Take bonus income for 2 recent years in following policy:
+          If the most recent year bonus income is lower than previous years bonus income take the most recent bonus income.
+          Else take an average of 2 financial years of bonus income.
+
+    *** Bad Credit *** 
+    If the equitax below 600 or default rate is 5000 it is classified as bad credit.
+      - La Trobe: Can assist with bad credit but will verify product with BDM.
+      - All other banks can't assist with bad credit.   
+
+    *** Self Employed Income Verification *** 
+      - Bankwest: Takes income from most recent financial year
+      - Qudos, CBA and La Trobe:
+      - Take income from most recent 2 financial years. 
+        If the most recent year's income is lower than previous years income take the most recent income.
+        Else take either an average of 2 financial years of income or 120% of previous years income, whichever is lower.
+
+
+    *** LMI Waiver *** 
+       - As long the LVR is within 80% or less no LMI is charged.
+       - La Trobe and Qudos do not have LMI waiver if the LVR is over 80% regardless of the profession.
+       - Bankwest waives LMI for doctors as long as the LVR is below 90%.
+       - CBA waives LMI for professionals in following professions: Doctors, Accountants, Lawyers as long as the LVR is below 90%.
+
+
+    *** Interest Rate ***
+
+        Qudos: 
+        LVR:                       Owner occupiers Interest Rate  Investment interst Rate
+        ---------------------------------------------------------------------------------        
+        Less than or equal to 80%      5.29                         5.49
+        Less than or equal to 70%      5.29                         5.39
+        Less than or equal to 60%      5.19                         5.29
+
+
+        Bankwest:
+        LVR:                       Owner occupiers Interest Rate  Investment interst Rate
+        ---------------------------------------------------------------------------------        
+        Less than or equal to 80%      5.49                         5.74
+        Less than or equal to 70%      5.49                         5.74
+        Less than or equal to 60%      5.44                         5.69
+
+        CBA:
+        LVR:                       Owner occupiers Interest Rate  Investment interst Rate
+        ---------------------------------------------------------------------------------        
+        Less than or equal to 80%      5.74                         5.94
+        Less than or equal to 70%      5.64                         5.84
+        Less than or equal to 60%      5.59                         5.79
+
+        La Trobe:
+        LVR:                       Owner occupiers Interest Rate  Investment interst Rate
+        ---------------------------------------------------------------------------------        
+        Less than or equal to 80%      6.29                         6.49
+        Less than or equal to 70%      6.24                         6.39
+        Less than or equal to 60%      6.09                         6.24
+
+
+    ** General Instructions **
+    Here is the order you should consider while selecting the best bank:
+    - highest accessible income
+    - lowest LMI rate
+    - lowest interest rate
+    Example: 
+      Even if Bankwest provides lower interest rate but has high accessible income, you should prefer bankwest. 
+    `;
 
     try {
       
       const prevUserMessage = messages.filter(message => message.sender == 'user').map(m => m.content).join('\n');
-      const response = await EmbeddingService.generateChatResponse(inputMessage, AI_BASE_CONTEXT, prevUserMessage);
+      const response = await EmbeddingService.generateChatResponse(inputMessage, AI_BASE_CONTEXT, AI_BASE_POLICIES, prevUserMessage);
       
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),

@@ -39,7 +39,7 @@ export class EmbeddingService {
     }
   }
 
-  static async generateChatResponse(query: string, context: string, historyMessage: string): Promise<string> {
+  static async generateChatResponse(query: string, context: string, policies:string): Promise<string> {
     const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
     
     if (!apiKey) {
@@ -57,10 +57,10 @@ export class EmbeddingService {
             {
               parts: [
                 {
-                  text: `You are a helpful assistant that answers questions about bank policies and mortgage information. Use the following context to answer questions accurately and helpfully.
-
-Context: ${context},
-Previous User Messages: ${historyMessage},
+                  text: `You are a mortgage broker consultant. From user input refer to following issues and find the ones which a user may fall under.
+credit issues: ${context},
+and from these issues and the bank whose policy would suit the user the most from the following policies: ${policies}. 
+Give short justificaiton for the selection.
 
 Question: ${query}
 
